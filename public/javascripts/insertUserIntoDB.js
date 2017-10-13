@@ -3,10 +3,16 @@
  */
 
 function insertUserIntoDB(username, email){
-    var user = {username: username, email: email};
-    db.collection("users").insert(user, function(err, res){
+    console.log("hello world");
+    console.log(typeof app);
+    console.log(typeof db);
+    db.connect(url, function (err, db) {
         if(err) throw err;
-        console.log("create user");
-        db.close();
+        var user = {username: username, email: email};
+        db.collection("users").insert(user, function(err, res){
+            if(err) throw err;
+            console.log("create user");
+            db.close();
+        });
     });
 }

@@ -4,7 +4,7 @@ block content
     div.container
         div.jumbotron
             h1
-                i.fa.fa-snowflake-o(aria-hidden="true")  #{title} 
+                i.fa.fa-snowflake-o(aria-hidden="true")  #{title}
                     i.fa.fa-tree(aria-hidden="true")
             p Hello CCTB! Welcome to #{title}
             p
@@ -17,7 +17,7 @@ block content
                     div.col-lg-6
                         div.form-group
                             label E-Mail
-                            input(type="text", class="form-control", id="email",placeholder="type in your email address")
+                            input(type="email", class="form-control", id="email",placeholder="type in your email address")
                 div.row
                     div.col-lg-6
-                        a.btn.btn-santa(href="/register") Register
+                        a.btn.btn-santa(onclick="insertUserIntoDB();") Register

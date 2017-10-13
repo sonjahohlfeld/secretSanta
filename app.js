@@ -4,12 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var mongoClient = require('mongodb').MongoClient;
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
+var db = require('./db');
 
 
 // view engine setup
@@ -27,6 +28,8 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', index);
 app.use('/users', users);
+
+app.use('./db', db);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,9 +51,10 @@ app.use(function(err, req, res, next) {
 
 module.exports = app;
 
-mongoClient.connect('mongodb://localhost:27017/mydb', function(err, db) {
+db.connect('mongodb://localhost:27017/mydb', function(err) {
     if (err) {
         throw err;
+    } else {
+        console.log("connected");
     }
-    console.log("Database created!");
 });

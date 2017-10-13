@@ -28,5 +28,5 @@ exports.close = function(done) {
             state.mode = null;
             done(err);
         });
-    };
+    }
 };
