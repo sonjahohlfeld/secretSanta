@@ -4,11 +4,13 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoClient = require('mongodb').MongoClient;
 
 var index = require('./routes/index');
 var users = require('./routes/users');
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -45,3 +47,10 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
+mongoClient.connect('mongodb://localhost:27017/mydb', function(err, db) {
+    if (err) {
+        throw err;
+    }
+    console.log("Database created!");
+});
