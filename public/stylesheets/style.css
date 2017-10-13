@@ -1,8 +1,15 @@
 body {
+  background-color: #9b0d12;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.btn-santa {
+  color: #fff;
+  background-color: #9b0d12;
+  border-color: #9b0d12;
 }
