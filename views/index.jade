@@ -8,16 +8,17 @@ block content
                     i.fa.fa-tree(aria-hidden="true")
             p Hello CCTB! Welcome to #{title}
             p
-                div.row
-                    div.col-lg-6
-                        div.form-group
-                            label Name
-                            input(type="text", class="form-control", id="username",placeholder="Type in your name")
-                div.row
-                    div.col-lg-6
-                        div.form-group
-                            label E-Mail
-                            input(type="email", class="form-control", id="email",placeholder="type in your email address")
-                div.row
-                    div.col-lg-6
-                        a.btn.btn-santa(onclick="insertUserIntoDB();") Register
+                form(method="post" action="/insertUser")
+                    div.row
+                        div.col-lg-6
+                            div.form-group
+                                label Name
+                                input(type="text", class="form-control", id="username",placeholder="Enter your name",required)
+                    div.row
+                        div.col-lg-6
+                            div.form-group
+                                label E-Mail
+                                input(type="email", class="form-control", id="email",placeholder="Enter your email address",required)
+                    div.row
+                        div.col-lg-6
+                            input(type="submit", value="Register")
