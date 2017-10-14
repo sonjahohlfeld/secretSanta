@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var insertUser = require('./routes/insertUser');
 
 var app = express();
 
@@ -27,9 +27,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', index);
-app.use('/users', users);
+app.use('/insertUser', insertUser);
 
-app.use('./db', db);
+//app.use('./db', db);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -49,8 +49,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-module.exports = app;
-
 db.connect('mongodb://localhost:27017/mydb', function(err) {
     if (err) {
         throw err;
@@ -58,3 +56,5 @@ db.connect('mongodb://localhost:27017/mydb', function(err) {
         console.log("connected");
     }
 });
+
+module.exports = app;
