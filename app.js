@@ -10,7 +10,7 @@ var insertUser = require('./routes/insertUser');
 
 var app = express();
 
-var db = require('./db');
+var mongoose = require('mongoose');
 
 
 // view engine setup
@@ -28,8 +28,6 @@ app.use(express.static(path.join(__dirname, 'node_modules')));
 
 app.use('/', index);
 app.use('/insertUser', insertUser);
-
-//app.use('./db', db);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -49,12 +47,12 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-db.connect('mongodb://localhost:27017/mydb', function(err) {
-    if (err) {
-        throw err;
-    } else {
-        console.log("connected");
-    }
+var mongoDB = 'mongodb://127.0.0.1/mydb';
+mongoose.connect(mongoDB, {
+    useMongoClient: true
 });
+
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 module.exports = app;
