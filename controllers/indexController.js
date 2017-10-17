@@ -11,7 +11,7 @@ exports.index = function(req, res) {
         user_count: function(callback){
             User.count(callback);
         },
-        user_name: function(callback){
+        user_list: function(callback){
             var query = User.find();
             query.select('username email');
             query.exec(callback);
@@ -19,10 +19,4 @@ exports.index = function(req, res) {
     }, function(err, results){
         res.render('index', { title: 'SecretSanta ', mainTitle: 'SecretSanta ', error: err, data: results});
     });
-
-    // User.find()
-    //     .exec(function(err, userlist){
-    //         if(err) {return next(err);}
-    //         res.render('index', { title: 'SecretSanta ', mainTitle: 'SecretSanta ', user_name: userlist})
-    //     })
 };

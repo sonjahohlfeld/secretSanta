@@ -23,5 +23,9 @@ block content
                         div.col-lg-6
                             input(type="submit", value="Register")
 
-            #{data.user_count}
-            #{data.user_name}
+            ul
+            each user in data.user_list
+                li= user.username
+            else
+                li sorry, no users yet!
+

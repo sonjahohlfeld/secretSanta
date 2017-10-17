@@ -2,6 +2,7 @@
  * Created by sonja on 10/15/17.
  */
 var mongoose = require('mongoose');
+var random = require('mongoose-random');
 
 var Schema = mongoose.Schema;
 
@@ -15,6 +16,8 @@ userModelSchema
     .get(function () {
         return '/insertUser';
     });
+
+userModelSchema.plugin(random, { path: 'r' });
 
 // var userModelInstance = new userModel({firstName: 'Toni', lastName: 'Hase', email: 'toni.hase@gmx.de'});
 // userModelInstance.save(function(err){
