@@ -45,7 +45,7 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-var mongoDB = 'mongodb://127.0.0.1/mydb';
+var mongoDB = 'mongodb://127.0.0.1/secretSanta';
 mongoose.connect(mongoDB, {
     useMongoClient: true
 });
