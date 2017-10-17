@@ -6,15 +6,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var userModelSchema = new Schema({
-    firstName: String,
-    lastName: String,
+    username: String,
     email: String
 });
 
 userModelSchema
-    .virtual('fullName')
+    .virtual('url')
     .get(function () {
-        return this.firstName + ' ' + this.lastName;
+        return '/insertUser';
     });
 
 // var userModelInstance = new userModel({firstName: 'Toni', lastName: 'Hase', email: 'toni.hase@gmx.de'});

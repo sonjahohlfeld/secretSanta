@@ -2,11 +2,9 @@ var express = require('express');
 var router = express.Router();
 
 var user_controller = require('../controllers/userController');
+var index_controller = require('../controllers/indexController');
 
-/* GET home page. */
-router.get('/', function(req, res) {
-  res.render('index', { title: 'SecretSanta', mainTitle: 'SecretSanta'});
-});
+router.get('/', index_controller.index);
 
 router.get('/insertUser', user_controller.user_insert_get);
 
