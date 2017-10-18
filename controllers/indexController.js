@@ -6,7 +6,6 @@ var User = require('../models/user');
 var async = require('async');
 
 exports.index = function(req, res) {
-
     async.parallel({
         user_count: function(callback){
             User.count(callback);

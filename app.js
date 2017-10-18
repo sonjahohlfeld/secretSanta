@@ -5,8 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressValidator = require('express-validator');
-var index = require('./routes/index');
 var mongoose = require('mongoose');
+
+var index = require('./routes/index');
 
 var app = express();
 
