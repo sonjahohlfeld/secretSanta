@@ -6,7 +6,7 @@ block content
             h1
                 i.fa.fa-snowflake-o(aria-hidden="true")  #{title}
                     i.fa.fa-tree(aria-hidden="true")
-            p Hello CCTB! Welcome to #{title}
+            p Hello #{name}! Welcome to #{title}
             p
                 form(method="post" action="/insertUser")
                     div.row
@@ -24,7 +24,7 @@ block content
                             input(type="submit", value="Register")
 
             ul
-            each user in data.user_list
+            each user in userlist
                 li= user.username
             else
                 li sorry, no users yet!
