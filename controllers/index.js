@@ -3,19 +3,21 @@
  */
 
 var User = require('../models/user');
-var async = require('async');
 
 exports.index = function(req, res) {
-    async.parallel({
-        user_count: function(callback){
-            User.count(callback);
-        },
-        user_list: function(callback){
-            var query = User.find();
-            query.select('username email');
-            query.exec(callback);
-        }
-    }, function(err, results){
-        res.render('index', { title: 'SecretSanta ', mainTitle: 'SecretSanta ', error: err, data: results});
+    User.find({}, 'username email').exec(function(err, user_list){
+        if(err){return err;}
+        res.render('index', { title: 'SecretSanta ', name: 'CCTB', userlist: user_list});
+    })
+};
+
+exports.insert_user_post = function(req, res){
+    var thisUser = new User({
+        username: req.body.username,
+        email: req.body.email
+    });
+    thisUser.save(function(err){
+        if(err){return err;}
+        res.render('insertUser', { title: 'SecretSanta ', name: req.body.username, message: 'Successfully registered'});
     });
 };
