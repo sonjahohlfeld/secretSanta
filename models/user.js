@@ -10,10 +10,4 @@ var userModelSchema = new Schema({
     email: String
 });
 
-userModelSchema
-    .virtual('url')
-    .get(function () {
-        return '/insertUser';
-    });
-
 module.exports = mongoose.model('userModel', userModelSchema);
